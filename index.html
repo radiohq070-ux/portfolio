@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Kengo Kotaki</title>
+<title>Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #fafaf8;
@@ -147,7 +147,7 @@
   /* SECTIONS */
   section { padding: 6rem 4rem; }
   .section-label {
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-light);
@@ -164,51 +164,73 @@
   .section-title em { font-style: italic; color: var(--text-muted); }
 
   /* ABOUT */
-  #about { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
-  .about-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.3rem;
-    line-height: 1.1;
+  #about { display: grid; grid-template-columns: 1.18fr 1fr; gap: 5rem; align-items: start; }
+  .about-statement {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 3.6vw, 3.3rem);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 1.4rem 0 0;
   }
-  .about-name-ja {
+  .about-statement em {
+    font-style: normal;
+    font-weight: 400;
+  }
+  .about-statement .mul {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 1.1em;
+    margin-right: 0.14em;
     font-weight: 300;
-    letter-spacing: 0.2em;
+  }
+  .about-statement-sub {
+    font-size: 0.9rem;
+    line-height: 1.95;
     color: var(--text-muted);
-    margin-bottom: 1.2rem;
+    margin-top: 1.8rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--border);
+    width: fit-content;
+    white-space: nowrap;
   }
   .about-role {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 2.5rem;
+    color: var(--text-light);
+    margin-top: 1.6rem;
   }
   .about-bio {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 2;
-    margin-bottom: 3rem;
     border-left: 1px solid var(--border);
     padding-left: 1.5rem;
   }
+  .about-bio p {
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    line-height: 2.05;
+    margin-bottom: 1.3rem;
+  }
+  .about-bio p:last-child {
+    margin-bottom: 0;
+  }
+  .about-skills { margin-top: 3rem; }
   .skills-section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-light);
     margin-bottom: 1.2rem;
   }
   .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .skill-tag {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
+    padding: 0.4rem 0.9rem;
     border: 1px solid var(--border);
     color: var(--text-muted);
     transition: all 0.2s;
@@ -346,6 +368,11 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  @media (max-width: 1080px) {
+    #about { grid-template-columns: 1fr; gap: 3.5rem; }
+    .about-statement-sub { max-width: none; white-space: normal; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1.2rem 2rem; }
     .nav-links { display: none; }
@@ -413,7 +440,7 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Kengo Kotaki</a>
+  <a href="#" class="nav-logo">Portfolio</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#design">Design</a></li>
@@ -441,28 +468,37 @@
 <hr class="divider">
 
 <section id="about">
-  <div class="reveal">
+  <div class="reveal about-lead">
     <p class="section-label">About</p>
-    <h2 class="about-name">Kengo Kotaki</h2>
-    <p class="about-name-ja">小滝　賢吾</p>
+    <h2 class="about-statement">
+      長年磨いた<em>デザインの軸</em><br>
+      <span class="mul">×</span> AIによる<em>生産性革新</em><br>
+      <span class="mul">×</span> 領域を越える<em>学習力</em>
+    </h2>
+    <p class="about-statement-sub">この掛け算で、変化の速い時代に新しい価値を生み出し続ける。</p>
     <p class="about-role">AI Director / Video Creator / Designer</p>
   </div>
   <div class="reveal">
-    <p class="about-bio">
-      AIディレクター・動画クリエイターとして、クリエイティブの企画・制作・ディレクションを行う。AIを駆使し、内製化・コスト削減・提案数の増加を実現しながら、構成・映像・コピー・デザインまで一貫した制作フローを構築。質とスピードを同時に高めるアプローチを強みに、豊富な実績を持つ。その土台には、アートディレクター・グラフィックデザイナーとして20年以上積み重ねてきたキャリアがある。
-    </p>
-    <p class="skills-section-label">Skills &amp; Tools</p>
-    <div class="skills-grid">
-      <span class="skill-tag">VIDEO DIRECTION</span>
-      <span class="skill-tag">VIDEO DESIGN</span>
-      <span class="skill-tag">ANIMATION DESIGN</span>
-      <span class="skill-tag">ART DIRECTION</span>
-      <span class="skill-tag">GRAPHIC DESIGN</span>
-      <span class="skill-tag">RETOUCH</span>
-      <span class="skill-tag">AI TOOLS</span>
-      <span class="skill-tag">ILLUSTRATOR</span>
-      <span class="skill-tag">PHOTOSHOP</span>
-      <span class="skill-tag">PREMIERE PRO</span>
+    <p class="skills-section-label">profile</p>
+    <div class="about-bio">
+      <p>アートディレクター・グラフィックデザイナーとして、業種を問わず多様なクライアントのブランディング・広告・販促を手がけ、課題解決に直結するデザインで高い評価を得てきた。</p>
+      <p>その表現力を映像領域へと拡張し、現在はAIディレクター・動画クリエイターとして企画・制作・ディレクションを一貫して担当。AIを駆使することで内製化・コスト削減・提案数の増加を実現し、企画から制作までを横断する一貫した制作フローを構築した。質とスピードを同時に高めるアプローチを強みに、豊富な実績を積み重ねている。</p>
+      <p>さらに専門領域に留まらず、Claude Codeを活用してWEB制作・UI/UX・システム開発といった非専門領域にも挑戦。デザインの視点とエンジニアリングの実装力を架橋しながら、自走でスキルを拡張し、アウトプットの幅そのものを広げ続けている。</p>
+    </div>
+    <div class="about-skills">
+      <p class="skills-section-label">Skills &amp; Tools</p>
+      <div class="skills-grid">
+        <span class="skill-tag">VIDEO DIRECTION</span>
+        <span class="skill-tag">VIDEO DESIGN</span>
+        <span class="skill-tag">ANIMATION DESIGN</span>
+        <span class="skill-tag">ART DIRECTION</span>
+        <span class="skill-tag">GRAPHIC DESIGN</span>
+        <span class="skill-tag">RETOUCH</span>
+        <span class="skill-tag">AI TOOLS</span>
+        <span class="skill-tag">ILLUSTRATOR</span>
+        <span class="skill-tag">PHOTOSHOP</span>
+        <span class="skill-tag">PREMIERE PRO</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1002,7 +1038,7 @@
 </section>
 
 <footer>
-  <span class="footer-copy">© 2025 Kengo Kotaki. All rights reserved.</span>
+  <span class="footer-copy">© 2025 Portfolio. All rights reserved.</span>
 </footer>
 
 
